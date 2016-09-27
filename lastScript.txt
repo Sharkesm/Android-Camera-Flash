@@ -1,0 +1,48 @@
+       if (!isCameraSupported(pm)) {
+                     AlertDialog infoAlert = new AlertDialog.Builder(context).create();
+                     infoAlert.setTitle("Access permission denied");
+                     infoAlert.setMessage(appCameraMissing);
+                     infoAlert.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                         @Override
+                         public void onClick(DialogInterface dialogInterface, int i) {
+                             finish(); // Finish current activity
+                             System.exit(0); // Terminate current running JVM
+                         }
+                     });
+                     infoAlert.show();
+                 } else {
+                     AlertDialog infoAlert = new AlertDialog.Builder(context).create();
+                     infoAlert.setTitle("Access permission granted");
+                     infoAlert.setMessage(appCameraMissing);
+                     infoAlert.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+                         @Override
+                         public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss(); // Terminate dialog
+                         }
+                     });
+                     infoAlert.show();
+                 }
+   
+
+camera = Camera.open();
+                 Camera.Parameters param = camera.getParameters();
+                 if (isFlashSupported(pm)) {
+                     if (!imageState) {
+                         bulbImageView.setImageDrawable(getResources().getDrawable(R.drawable.on));
+                         param.setFlashMode(param.FLASH_MODE_ON);
+                         camera.setParameters(param);
+                         camera.startPreview();
+                         isFlashOn = true;
+                         imageState = true;
+                     } else {
+                         bulbImageView.setImageDrawable(getResources().getDrawable(R.drawable.off));
+                         param.setFlashMode(param.FLASH_MODE_ON);
+                         camera.setParameters(param);
+                         camera.startPreview();
+                         isFlashOn = true;
+                         imageState = false;
+                     }
+                     Toast.makeText(context,isFlashOn.toString(),Toast.LENGTH_LONG).show();
+                 } else {
+                     Toast.makeText(context,"Camera flash is not supported",Toast.LENGTH_LONG).show();
+                 }
