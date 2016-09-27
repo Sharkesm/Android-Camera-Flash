@@ -5,4 +5,6 @@ This assignment project will serve better different kind of code skeers to find 
 
 The project contains uses java on logic part and utilizes android XML layout scheme to visualize the looks of the application. Note the application will only work if one's phone has an upgrade above marshmallow version. 
 
+Incase your wondering, the project was simply developed on Android IDE since it's easier to develop and deploy android applications for testing issues. For easy jump off to the code checkout the link : http://bit.ly/2dgTTm5 and brainstorm more on logic part of the application. 
+
 
